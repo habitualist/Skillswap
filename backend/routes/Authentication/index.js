@@ -1,11 +1,13 @@
-// routes/auth.js — Authentication routes
+// routes/Authentication/index.js — Auth routes
+const express    = require('express');
+const router     = express.Router();
+const { register, login } = require('../../controllers/AuthController/index');
+const rateLimiter = require('../../middleware/RateLimiter/index');
+
 // POST /api/auth/register
+router.post('/register', rateLimiter, register);
+
 // POST /api/auth/login
-// GET  /api/auth/google
-// GET  /api/auth/google/callback
+router.post('/login', rateLimiter, login);
 
-const express = require('express');
-const router  = express.Router();
-
-// Routes will be built in Phase 3
 module.exports = router;
