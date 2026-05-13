@@ -121,4 +121,31 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login, generateToken };
+// ============================================
+// GOOGLE OAUTH
+// ============================================
+
+const googleAuth = (accessToken, refreshToken, profile, done) => {
+  const { id, displayName, emails } = profile;
+  const email = emails[0].value;
+  const name = displayName;
+
+  pool.query('SELECT * FROM users WHERE google_id = $1 OR email = $2', [id, email])
+    .then(result => {
+      if (result.rows.length > 0) {
+        // User already exists — return them
+        return done(null, result.rows[0]);
+      } else {
+        // New user — create them
+        return pool.query(
+          `INSERT INTO users (name, email, google_id)
+           VALUES ($1, $2, $3)
+           RETURNING *`,
+          [name, email, id]
+        ).then(newResult => done(null, newResult.rows[0]));
+      }
+    })
+    .catch(err => done(err, null));
+};
+
+module.exports = { register, login, generateToken, googleAuth };
