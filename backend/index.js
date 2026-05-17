@@ -19,6 +19,10 @@ app.use(cors({
   credentials: true
 }));
 
+// Apply general rate limiter to all routes
+const { generalLimiter } = require('./middleware/RateLimiter/index');
+app.use(generalLimiter);
+
 // Parse incoming JSON request bodies
 app.use(express.json());
 

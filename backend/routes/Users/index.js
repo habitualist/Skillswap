@@ -1,8 +1,8 @@
-// routes/users.js — User routes
-// GET /api/users/:id
+// routes/Users/index.js — User routes
+const express    = require('express');
+const router     = express.Router();
+const { getUserProfile } = require('../../controllers/UsersController/index');
 
-const express = require('express');
-const router  = express.Router();
+router.get('/:id', getUserProfile);
 
-// Routes will be built in Phase 3
 module.exports = router;
