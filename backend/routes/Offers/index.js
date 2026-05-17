@@ -1,14 +1,27 @@
-// routes/offers.js — Offer routes
-// GET    /api/offers
-// GET    /api/offers/search
-// GET    /api/offers/:id
-// POST   /api/offers
-// PUT    /api/offers/:id
-// DELETE /api/offers/:id
-// PATCH  /api/offers/:id/match
+// routes/Offers/index.js — Offer routes
+const express     = require('express');
+const router      = express.Router();
+const verifyToken = require('../../middleware/JwtVerifier/index');
+const upload      = require('../../middleware/CloudinaryUploads/index');
+const {
+  getAllOffers,
+  searchOffers,
+  getOfferById,
+  createOffer,
+  updateOffer,
+  deleteOffer,
+  toggleMatch
+} = require('../../controllers/OffersController/index');
 
-const express = require('express');
-const router  = express.Router();
+// Public routes
+router.get('/',        getAllOffers);
+router.get('/search',  searchOffers);
+router.get('/:id',     getOfferById);
 
-// Routes will be built in Phase 3
+// Protected routes
+router.post('/',           verifyToken, upload.single('photo'), createOffer);
+router.put('/:id',         verifyToken, updateOffer);
+router.delete('/:id',      verifyToken, deleteOffer);
+router.patch('/:id/match', verifyToken, toggleMatch);
+
 module.exports = router;

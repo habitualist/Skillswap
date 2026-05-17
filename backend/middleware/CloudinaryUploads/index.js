@@ -3,7 +3,7 @@
 // Import this and use upload.single('photo') on any route that accepts an image
 
 const multer  = require('multer');
-const { storage } = require('../config/Cloudinary');
+const { storage } = require('../../config/Cloudinary/index');
 
 const upload = multer({ storage });
 
