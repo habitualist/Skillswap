@@ -1,0 +1,280 @@
+{
+  "info": {
+    "name": "SkillSwap API",
+    "description": "Complete API collection for SkillSwap — A Peer-to-Peer Skill Exchange Platform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "your_jwt_token_here",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "register"]
+            },
+            "description": "Register a new user. Returns JWT token and user object."
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"alex@skillswap.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            },
+            "description": "Login with email and password. Returns JWT token and user object."
+          }
+        },
+        {
+          "name": "Google OAuth",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/google",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "google"]
+            },
+            "description": "Initiates Google OAuth flow. Opens Google login page."
+          }
+        },
+        {
+          "name": "Google OAuth Callback",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/google/callback",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "google", "callback"]
+            },
+            "description": "Google OAuth callback. Handled automatically by Google redirect."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Offers",
+      "item": [
+        {
+          "name": "Get All Offers",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/offers",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "offers"],
+              "query": [
+                { "key": "level", "value": "Beginner", "disabled": true },
+                { "key": "format", "value": "Video Call", "disabled": true }
+              ]
+            },
+            "description": "Get all offers. Supports optional ?level= and ?format= filters. Public route."
+          }
+        },
+        {
+          "name": "Search Offers",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/offers/search?q=React",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "offers", "search"],
+              "query": [
+                { "key": "q", "value": "React" }
+              ]
+            },
+            "description": "Search offers by keyword across offering_skill, seeking_skill and description. Public route."
+          }
+        },
+        {
+          "name": "Get Single Offer",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/offers/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "offers", "1"]
+            },
+            "description": "Get a single offer by ID with swap request count. Public route."
+          }
+        },
+        {
+          "name": "Create Offer",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"offering_skill\": \"React\",\n  \"seeking_skill\": \"Figma\",\n  \"level\": \"Intermediate\",\n  \"format\": \"Video Call\",\n  \"description\": \"I have 3 years of React experience and can teach hooks, context, and component architecture.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/offers",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "offers"]
+            },
+            "description": "Create a new skill offer. Requires JWT authentication. Supports optional photo upload via multipart/form-data."
+          }
+        },
+        {
+          "name": "Update Offer",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"offering_skill\": \"React & Node.js\",\n  \"seeking_skill\": \"Figma & UI Design\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/offers/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "offers", "1"]
+            },
+            "description": "Edit an existing offer. Requires JWT authentication. Owner only — returns 403 if not owner."
+          }
+        },
+        {
+          "name": "Delete Offer",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/offers/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "offers", "1"]
+            },
+            "description": "Delete an offer. Requires JWT authentication. Owner only — returns 403 if not owner."
+          }
+        },
+        {
+          "name": "Toggle Matched Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/offers/1/match",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "offers", "1", "match"]
+            },
+            "description": "Toggle is_matched status on an offer. Flips true/false. Owner only."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Swap Requests",
+      "item": [
+        {
+          "name": "Send Swap Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"Hi! I speak fluent Spanish and would love to learn React from you. I think we would be a great match!\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/offers/2/request",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "offers", "2", "request"]
+            },
+            "description": "Send a swap request to an offer. Requires JWT. Blocked if: own offer, or offer already matched."
+          }
+        },
+        {
+          "name": "Get Swap Requests for Offer",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/offers/1/requests",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "offers", "1", "requests"]
+            },
+            "description": "View all swap requests for an offer. Requires JWT. Owner only — returns 403 if not owner."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get User Profile",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/users/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "1"]
+            },
+            "description": "Get a user profile and all their offers. Public route."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "API Health",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "health"]
+            },
+            "description": "Check if the API is running."
+          }
+        }
+      ]
+    }
+  ]
+}
