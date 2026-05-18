@@ -1,4 +1,3 @@
-// components/Footer/index.jsx
 import { Link } from 'react-router-dom';
 import './styles.css';
 
@@ -13,7 +12,7 @@ const Footer = () => {
               <span className="logo-text">SkillSwap</span>
             </Link>
             <p className="footer-tagline">
-              We are bringing real learning back to real people.
+              Bringing real learning back to real people.
             </p>
             <div className="footer-socials">
               <a href="#" className="social-link">X</a>
@@ -45,3 +44,11 @@ const Footer = () => {
         </div>
         <div className="footer-bottom">
           <span className="footer-copy">All rights reserved.</span>
+          <span className="footer-made">2026 SkillSwap</span>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
