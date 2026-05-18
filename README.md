@@ -276,3 +276,6 @@ This creates:
 - Photo uploads are optional — offers without photos display a placeholder avatar
 - Search is case-insensitive but requires at least one matching word in offering_skill, seeking_skill, or description
 - Free tier on Render spins down after inactivity — first request after idle may take 30-60 seconds to respond
+
+Frontend: https://skillswap-sable-xi.vercel.app
+Backend: Runs locally during demo
