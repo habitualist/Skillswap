@@ -14,6 +14,22 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, #00d97e20 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 50%, #00d97e08 0%, transparent 50%),
+    radial-gradient(ellipse 40% 30% at 20% 80%, #00d97e06 0%, transparent 50%);
+}
+
+.hero-glow {
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 700px;
+  background: radial-gradient(ellipse at center top, #00d97e18 0%, #00d97e08 30%, transparent 60%);
+  border-radius: 50%;
+  filter: blur(40px);
 }
 
 button.btn-hero-secondary {

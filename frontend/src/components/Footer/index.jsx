@@ -43,8 +43,8 @@ const Footer = () => (
         </div>
       </div>
       <div className="footer-bottom">
-        <span className="footer-copy">© 2026 SkillSwap. All rights reserved.</span>
-        <span className="footer-made">Built with ❤️ for skill sharers everywhere</span>
+        <<span className="footer-copy">All rights reserved.</span>
+        <span className="footer-made">© 2026 SkillSwap — Trade Skills. Grow Together.</span>
       </div>
     </div>
   </footer>
