@@ -5,9 +5,9 @@
   left: 0;
   right: 0;
   z-index: 100;
-  background: var(--bg-base);
+  background: rgba(10, 10, 15, 0.85);
   border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px);
   height: 64px;
 }
 
@@ -18,7 +18,7 @@
   height: 100%;
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
 }
 
 /* Logo */
@@ -30,10 +30,9 @@
   flex-shrink: 0;
 }
 
-.logo-icon {
-  font-size: 22px;
+.logo-dot {
+  font-size: 20px;
   color: var(--accent);
-  line-height: 1;
 }
 
 .logo-text {
@@ -44,75 +43,105 @@
   letter-spacing: -0.02em;
 }
 
-/* Search */
-.navbar-search {
+/* Nav links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   flex: 1;
-  max-width: 400px;
-  position: relative;
-  display: flex;
-  align-items: center;
 }
 
-.search-icon {
-  position: absolute;
-  left: 14px;
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
-  pointer-events: none;
+.nav-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  transition: var(--transition);
+  text-decoration: none;
+  white-space: nowrap;
 }
 
-.search-input {
+.nav-link:hover {
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+}
+
+/* Search */
+.nav-search-form {
+  flex: 1;
+  max-width: 320px;
+  margin-left: 8px;
+}
+
+.nav-search-input {
   width: 100%;
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
   color: var(--text-primary);
-  font-size: 14px;
-  padding: 9px 16px 9px 38px;
+  font-size: 13px;
+  padding: 8px 16px;
   transition: var(--transition);
+  font-family: var(--font-body);
 }
 
-.search-input:focus {
+.nav-search-input:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-dim);
-  background: var(--bg-overlay);
+  outline: none;
 }
 
-.search-input::placeholder { color: var(--text-muted); }
+.nav-search-input::placeholder { color: var(--text-muted); }
 
 /* Actions */
 .navbar-actions {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-left: auto;
   flex-shrink: 0;
 }
 
-/* Avatar dropdown */
-.navbar-avatar {
-  position: relative;
+/* User menu */
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   cursor: pointer;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+  position: relative;
 }
 
-.navbar-avatar .avatar {
-  border: 2px solid var(--border);
-  transition: var(--transition);
+.navbar-user:hover {
+  background: var(--bg-elevated);
+  border-color: var(--border-hover);
+}
+
+.navbar-user .avatar {
   background: var(--accent-dim);
   color: var(--accent);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
 }
 
-.navbar-avatar:hover .avatar {
-  border-color: var(--accent);
-  box-shadow: var(--accent-glow);
+.user-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
+.chevron {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* Dropdown */
 .navbar-dropdown {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + 8px);
   right: 0;
   background: var(--bg-elevated);
   border: 1px solid var(--border-hover);
@@ -135,6 +164,7 @@
   width: 100%;
   text-align: left;
   font-family: var(--font-body);
+  text-decoration: none;
 }
 
 .dropdown-item:hover {
@@ -145,7 +175,48 @@
 .dropdown-item-danger { color: var(--danger) !important; }
 .dropdown-item-danger:hover { background: #ff4d6d11 !important; }
 
+/* CTA button */
+.btn-nav-cta {
+  background: var(--accent);
+  color: #000;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.btn-nav-cta:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-accent);
+}
+
 @media (max-width: 768px) {
-  .navbar-search { display: none; }
-  .logo-text { font-size: 18px; }
+  .navbar-inner {
+    gap: 12px;
+  }
+
+  .navbar-links {
+    display: flex;
+    gap: 4px;
+  }
+
+  .nav-link {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+
+  .nav-search-form {
+    display: none;
+  }
+
+  .user-name { display: none; }
+
+  .btn-nav-cta {
+    font-size: 12px;
+    padding: 7px 14px;
+  }
 }
