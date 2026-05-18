@@ -44,4 +44,4 @@ const Footer = () => {
           </div>
         </div>
         <div className="footer-bottom">
-          <span className="footer-copy">All rights reserved.</span
+          <span className="footer-copy">All rights reserved.</span>
