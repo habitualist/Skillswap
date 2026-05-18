@@ -1,0 +1,24 @@
+// hooks/useToast/index.js — Toast notification system
+import { useState, useCallback } from 'react';
+
+const useToast = () => {
+  const [toasts, setToasts] = useState([]);
+
+  const showToast = useCallback((message, type = 'success') => {
+    const id = Date.now();
+    setToasts(prev => [...prev, { id, message, type }]);
+
+    // Auto remove after 4 seconds
+    setTimeout(() => {
+      setToasts(prev => prev.filter(t => t.id !== id));
+    }, 4000);
+  }, []);
+
+  const removeToast = useCallback((id) => {
+    setToasts(prev => prev.filter(t => t.id !== id));
+  }, []);
+
+  return { toasts, showToast, removeToast };
+};
+
+export default useToast;

@@ -1,0 +1,19 @@
+/* pages/SearchResults/styles.css */
+.search-page {
+  padding-bottom: 80px;
+}
+
+.search-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 0 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.search-title {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}

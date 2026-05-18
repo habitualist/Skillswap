@@ -1,0 +1,134 @@
+/* pages/CreateOffer/styles.css */
+.create-offer-page {
+  padding-bottom: 80px;
+}
+
+.create-offer-layout {
+  max-width: 680px;
+  margin: 0 auto;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.create-offer-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.create-offer-title {
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.create-offer-subtitle {
+  font-size: 16px;
+  color: var(--text-secondary);
+}
+
+/* Card */
+.create-offer-card {
+  padding: 36px;
+}
+
+.create-offer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Photo upload */
+.photo-upload-area {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px dashed var(--border-hover);
+  cursor: pointer;
+  overflow: hidden;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-elevated);
+}
+
+.photo-upload-area:hover {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+  padding: 12px;
+}
+
+.photo-icon { font-size: 24px; }
+
+.photo-placeholder span:nth-child(2) {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.photo-hint {
+  font-size: 10px !important;
+  color: var(--text-muted) !important;
+}
+
+.photo-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Skills row */
+.skills-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.skills-row .form-group { flex: 1; }
+
+.skills-row-arrow {
+  font-size: 20px;
+  color: var(--text-muted);
+  padding-bottom: 12px;
+  flex-shrink: 0;
+}
+
+/* Two col */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Textarea */
+.create-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Actions */
+.create-offer-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 768px) {
+  .create-offer-card { padding: 24px; }
+  .skills-row { flex-direction: column; }
+  .skills-row-arrow { display: none; }
+  .two-col { grid-template-columns: 1fr; }
+}
