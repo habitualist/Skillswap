@@ -262,11 +262,10 @@ This creates:
 ---
 
 ## Live URLs
-
 | | URL |
 |--|-----|
-| **Frontend** | https://skillswap.vercel.app |
-| **Backend API** | https://skillswap-api.onrender.com |
+| **Frontend** | https://skillswap-sable-xi.vercel.app |
+| **Backend API** | https://skillswap-pumw.onrender.com |
 
 ---
 
