@@ -45,7 +45,14 @@ const Login = ({ showToast }) => {
 
         {/* Header */}
         <div className="auth-header">
-          <Link to="/" className="auth-logo">⟁ SkillSwap</Link>
+          <Link to="/" className="auth-logo">
+  <div className="auth-logo-icon">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+      <path d="M7 16l-4-4 4-4M17 8l4 4-4 4M14 4l-4 16" stroke="#00e87a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  </div>
+  SkillSwap
+</Link>
           <h1 className="auth-title">Welcome back</h1>
           <p className="auth-subtitle">Sign in to continue trading skills</p>
         </div>

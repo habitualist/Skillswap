@@ -7,8 +7,22 @@ const Footer = () => {
       <div className="container">
         <div className="footer-top">
           <div className="footer-brand">
-            <Link to="/" className="footer-logo">
-              <span className="logo-dot">✦</span>
+           <Link to="/" className="footer-logo">
+              <div style={{
+                width: '28px',
+                height: '28px',
+                background: 'var(--accent-dim)',
+                border: '1px solid var(--border-accent)',
+                borderRadius: '7px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0
+              }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                  <path d="M7 16l-4-4 4-4M17 8l4 4-4 4M14 4l-4 16" stroke="#00e87a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
               <span className="logo-text">SkillSwap</span>
             </Link>
             <p className="footer-tagline">

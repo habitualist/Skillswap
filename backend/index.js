@@ -13,8 +13,8 @@ const app = express();
 // CORS — allows your React frontend to talk to this backend
 app.use(cors({
   origin: [
-    'http://localhost:5173',       // React dev server
-    'https://skillswap.vercel.app' // Your Vercel frontend (update later)
+    'http://localhost:5173',
+    'https://skillswap-sable-xi.vercel.app'
   ],
   credentials: true
 }));
@@ -23,14 +23,15 @@ app.use(cors({
 const { generalLimiter } = require('./middleware/RateLimiter/index');
 app.use(generalLimiter);
 
-// Parse incoming JSON request bodies
+// Parse incoming JSON request bodies( this lets me read req.body.)
 app.use(express.json());
 
 // Parse URL-encoded form data
 app.use(express.urlencoded({ extended: true }));
 
 // ============================================
-// ROUTES
+// ROUTES---I mount each route group on a base path. This keeps the code organized —
+//  all auth logic lives in one file, all offer logic in another.
 // ============================================
 
 const authRoutes  = require('./routes/Authentication/index');
