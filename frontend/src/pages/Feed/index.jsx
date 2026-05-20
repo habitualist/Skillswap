@@ -111,22 +111,21 @@ const Feed = ({ showToast }) => {
             </div>
 
             <div className="hero-stats">
-              <div className="hero-stat">
-                <span className="hero-stat-num">{offers.length}+</span>
-                <span className="hero-stat-label">Active Offers</span>
-              </div>
-              <div className="hero-stat-sep" />
-              <div className="hero-stat">
-                <span className="hero-stat-num">3+</span>
-                <span className="hero-stat-label">Skill Traders</span>
-              </div>
-              <div className="hero-stat-sep" />
-              <div className="hero-stat">
-                <span className="hero-stat-num">100%</span>
-                <span className="hero-stat-label">Free Forever</span>
-              </div>
-            </div>
-          </div>
+        <div className="hero-stat">
+          <span className="hero-stat-num">{loading ? '...' : `${offers.length}+`}</span>
+          <span className="hero-stat-label">Active Offers</span>
+        </div>
+        <div className="hero-stat-sep" />
+        <div className="hero-stat">
+          <span className="hero-stat-num">{loading ? '...' : `${new Set(offers.map(o => o.user_id)).size}+`}</span>
+          <span className="hero-stat-label">Skill Traders</span>
+        </div>
+        <div className="hero-stat-sep" />
+        <div className="hero-stat">
+          <span className="hero-stat-num">100%</span>
+          <span className="hero-stat-label">Free Forever</span>
+        </div>
+      </div>
 
           {/* Floating cards visual */}
           <div className="hero-visual">
