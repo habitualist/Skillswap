@@ -64,9 +64,7 @@ app.use((err, req, res, next) => {
 });
 
 
-app.get('/api/env', (req, res) => {
-  res.json({ NODE_ENV: process.env.NODE_ENV });
-});
+
 
 // ============================================
 // START SERVER
