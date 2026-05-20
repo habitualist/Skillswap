@@ -1,7 +1,7 @@
 // seed.js — Populates the database with realistic test data
 // Run with: node seed.js
 
-const pool = require('../config/DatabaseConnection/index');
+const pool = require('../backend/config/DatabaseConnection/index');
 const bcrypt = require('bcrypt');
 
 const seed = async () => {

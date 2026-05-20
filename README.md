@@ -266,7 +266,6 @@ This creates:
 |--|-----|
 | **Frontend** | https://skillswap-sable-xi.vercel.app |
 | **Backend API** | https://skillswap-pumw.onrender.com |
-
 ---
 
 ## Known Limitations
