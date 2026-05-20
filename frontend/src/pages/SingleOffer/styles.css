@@ -250,6 +250,11 @@
   }
   .single-offer-sidebar {
     position: static;
+    order: -1;
   }
-  .skill-name-lg { font-size: 22px; }
+  .single-offer-header-card { padding: 20px; }
+  .skill-name-lg { font-size: 20px; }
+  .owner-actions { flex-wrap: wrap; }
+  .single-offer-skills { flex-direction: column; gap: 12px; padding: 16px; }
+  .skill-exchange-arrow { display: none; }
 }

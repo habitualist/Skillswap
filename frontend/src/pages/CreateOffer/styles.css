@@ -317,16 +317,14 @@
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .create-layout {
     grid-template-columns: 1fr;
   }
   .create-preview-side { display: none; }
-  .two-col { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 768px) {
+  .create-card { padding: 20px; }
   .skills-exchange { flex-direction: column; }
   .exchange-arrow { display: none; }
-  .create-card { padding: 20px; }
+  .two-col { grid-template-columns: 1fr; }
+  .create-title { font-size: 28px; }
 }
